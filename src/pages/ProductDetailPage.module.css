@@ -1,0 +1,251 @@
+.detailSection {
+  padding: 80px 0;
+  background: transparent;
+  min-height: 85vh;
+}
+
+.notFound {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.backWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 0;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  padding: 10px 22px;
+  background: var(--choco);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 14px rgba(62, 39, 35, 0.18);
+}
+
+.backBtn:hover {
+  background: var(--choco-light);
+  transform: translateX(-3px);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.imageArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #2a1a13, #3e2723);
+  border: 2.5px solid rgba(62, 39, 35, 0.6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 8px 8px 0 rgba(62, 39, 35, 0.25);
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.imgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #2a1a13, #3e2723);
+}
+
+.emoji {
+  font-size: 10rem;
+}
+
+.infoArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--choco);
+  line-height: 1.2;
+}
+
+.shortDesc {
+  font-size: 1.1rem;
+  color: var(--brown);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--choco);
+  font-weight: 700;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--choco);
+  line-height: 1.7;
+}
+
+.details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.details li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--choco);
+}
+
+.check {
+  color: var(--rose);
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--choco);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.qtyBtn {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--choco);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qtyBtn:hover {
+  background: var(--warm);
+}
+
+.qtyValue {
+  width: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--choco);
+}
+
+.addBtn {
+  flex: 1;
+  height: 48px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border: 2px solid var(--choco);
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  color: var(--choco);
+}
+
+.totalPrice {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--choco);
+}
+
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 50px;
+  background: #25D366;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.whatsappBtn:hover {
+  background: #20BD5A;
+}
+
+@media (max-width: 768px) {
+  .detailSection {
+    padding: 20px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .imageWrapper {
+    max-width: 280px;
+  }
+
+  .emoji {
+    font-size: 7rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .quantitySelector {
+    justify-content: center;
+  }
+}

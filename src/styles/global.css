@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Inter:wght@300..600&family=Schoolbell&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --choco: #3E2723;
+  --cream: #F7EFE7;
+  /* Softer, warmer elegant cream rather than stark white */
+  --rose: #E3C7C7;
+  --brown: #8C5E45;
+  --choco-light: #6D4C41;
+  --warm: #F6EFE9;
+
+  --font-display: 'Love Ya Like A Sister', cursive;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 10px 40px rgba(62, 39, 35, 0.08);
+  --shadow-btn: 0 4px 14px rgba(62, 39, 35, 0.15);
+  --transition: 0.4s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--rose);
+  color: var(--choco);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Global Layout Container ── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  /* Consistent horizontal padding */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* ── Reusable utility classes ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--choco);
+  border-color: rgba(62, 39, 35, 0.2);
+}
+
+.btn-outline:hover {
+  background: rgba(62, 39, 35, 0.04);
+  border-color: var(--choco);
+  transform: translateY(-2px);
+}
+
+.btn-filled {
+  background: var(--choco);
+  color: var(--cream);
+  border-color: var(--choco);
+}
+
+.btn-filled:hover {
+  background: var(--choco-light);
+  border-color: var(--choco-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn);
+}
+
+/* Scroll reveal utilities */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes badge-spin {
+  0% {
+    transform: rotate(12deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+
+  100% {
+    transform: rotate(12deg);
+  }
+}

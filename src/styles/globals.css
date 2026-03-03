@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Nunito:wght@400;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --choco: #3E2723;
+  --cream: #FFF9F5;
+  --rose: #D4A5A5;
+  --brown: #8C5E45;
+  --choco-light: #6D4C41;
+  --font-display: 'Love Ya Like A Sister', cursive;
+  --font-body: 'Nunito', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--choco);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}

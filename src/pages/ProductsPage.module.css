@@ -1,0 +1,64 @@
+.productsSection {
+  padding: 80px 0;
+  /* Horizontal padding removed, relying on .container */
+  background: transparent;
+  min-height: 80vh;
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--choco);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--brown);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.comingSoon {
+  margin-top: 60px;
+}
+
+.comingSoonTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--choco);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .productsSection {
+    padding: 60px 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}

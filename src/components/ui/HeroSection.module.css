@@ -1,0 +1,327 @@
+.heroWrapper {
+  padding: 24px 16px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Base layer: Cream/Warm tone */
+  background: var(--cream);
+  min-height: calc(90vh - 48px);
+  /* slightly taller for the dramatic sweep */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 120px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(62, 39, 35, 0.08);
+  /* Lift off the rose background */
+}
+
+/* ── Layer 1: Base Background ── */
+.baseBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Layer 2: Massive Diagonal Chocolate Sweep ── */
+.diagonalSweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.diagonalSweep svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Cover entire section */
+  display: block;
+}
+
+.diagonalSweep path {
+  /* Subtle drop shadow to lift the sweep off the cream background */
+  filter: drop-shadow(0 20px 40px rgba(62, 39, 35, 0.15));
+}
+
+/* ── Content Grid ── */
+.content {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Text Content ── */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 500px;
+}
+
+.text>* {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+.animateIn>* {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 5.5vw, 4.6rem);
+  line-height: 1.1;
+  color: var(--cream);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pill {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--choco);
+  border-radius: var(--radius-pill);
+  padding: 4px 20px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(62, 39, 35, 0.15);
+  /* Lift off the sweep */
+}
+
+.pillRose {
+  background: var(--rose);
+  color: var(--choco);
+}
+
+.subtitle {
+  font-family: 'Schoolbell', cursive;
+  font-size: 1.18rem;
+  font-style: normal;
+  margin: 20px 0;
+  font-weight: 400;
+  color: var(--choco);
+  line-height: 1.7;
+
+  /* Organic cream blob — text always inside */
+  background: #fdf6ee;
+  padding: 38px 52px;
+  border-radius: 38% 62% 46% 54% / 52% 44% 56% 48%;
+  border: 1.5px solid rgba(180, 120, 60, 0.18);
+  box-shadow:
+    0 8px 28px rgba(120, 70, 20, 0.10),
+    0 2px 6px rgba(120, 70, 20, 0.06);
+  overflow: hidden;
+}
+
+.ctaWrapper {
+  margin-top: 10px;
+}
+
+.cta {
+  padding: 16px 40px;
+  font-size: 1.05rem;
+  background: var(--cream);
+  color: var(--choco);
+  border: none;
+  border-radius: var(--radius-pill);
+}
+
+.cta:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Staged Product Showcase ── */
+.showcase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.25, 1) 0.2s, transform 1.2s cubic-bezier(0.25, 1, 0.25, 1) 0.2s;
+}
+
+.animateShowcaseIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Soft textural backdrop specifically for the stage */
+.stageBackdrop {
+  position: absolute;
+  width: 450px;
+  height: 600px;
+  background: var(--cream);
+  /* Creates a pedestal-like contrast */
+  border-radius: 200px;
+  z-index: 1;
+  transform: rotate(15deg) translate(calc(var(--mouse-x, 0) * -20px), calc(var(--mouse-y, 0) * -20px));
+  box-shadow: 0 30px 60px rgba(62, 39, 35, 0.1);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+/* Intense focal radial lighting to draw the eye behind the product */
+.focalLight {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, transparent 60%);
+  z-index: 2;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+/* The actual physical staging area */
+.productStage {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImg {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  /* Deep shadow to ground the physical image inside the stage */
+  filter: drop-shadow(0 40px 60px rgba(62, 39, 35, 0.35));
+  /* Subtly floats + moves with parallax */
+  transform: translate(calc(var(--mouse-x, 0) * 15px), calc(var(--mouse-y, 0) * 15px));
+  animation: stagedFloat 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Abstract artistic sprinkles floating around the stage */
+.sprinkle {
+  position: absolute;
+  color: var(--rose);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.sp1 {
+  top: -20px;
+  right: 0;
+  animation: stagedFloat 5s ease-in-out infinite alternate;
+  font-size: 3rem;
+}
+
+.sp2 {
+  bottom: 40px;
+  left: -20px;
+  animation: stagedFloat 6s ease-in-out infinite alternate-reverse;
+  color: var(--choco-light);
+}
+
+.sp3 {
+  top: 40%;
+  right: -40px;
+  animation: stagedFloat 4s ease-in-out infinite alternate;
+  font-size: 1.5rem;
+}
+
+@keyframes stagedFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 40px 100px;
+  }
+
+  .diagonalSweep path {
+    /* Adjust curve for mobile stacking */
+    d: path("M0,0 L1440,0 L1440,500 C900,1000 400,600 0,900 Z");
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 60px;
+  }
+
+  .text {
+    margin: 0 auto;
+  }
+
+  .ctaWrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .stageBackdrop {
+    width: 320px;
+    height: 480px;
+  }
+
+  .productImg {
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 30px 80px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .stageBackdrop {
+    width: 250px;
+    height: 350px;
+  }
+
+  .productImg {
+    max-width: 260px;
+  }
+
+  .sp1,
+  .sp2,
+  .sp3 {
+    display: none;
+    /* remove clutter on small screens */
+  }
+}

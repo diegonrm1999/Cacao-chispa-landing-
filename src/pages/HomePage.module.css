@@ -1,0 +1,56 @@
+.productsSection {
+  padding: 80px 0;
+  /* Horizontal padding removed, relying on .container */
+  background: transparent;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto 40px;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 1.8rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--choco);
+}
+
+.dash {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--choco);
+}
+
+.scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overflow: visible;
+  padding-bottom: 24px;
+  padding-top: 12px;
+  margin: 0 auto;
+  scrollbar-width: none;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .productsSection {
+    padding: 60px 0;
+  }
+}

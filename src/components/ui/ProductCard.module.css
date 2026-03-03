@@ -1,0 +1,133 @@
+/* ── Card shell ── */
+.card {
+  min-width: 260px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border: 2px solid rgba(62, 39, 35, 0.55);
+
+  /* 3D tilt controlled by JS CSS vars */
+  transform:
+    perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(0px);
+  transition:
+    transform 0.15s cubic-bezier(0.25, 1, 0.25, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.25, 1),
+    border-color 0.3s ease;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+}
+
+/* On hover: lift card, deepen shadow, brighten border */
+.card:hover {
+  transform:
+    perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-10px);
+  box-shadow:
+    0 20px 50px rgba(62, 39, 35, 0.22),
+    0 4px 12px rgba(62, 39, 35, 0.12);
+  border-color: rgba(62, 39, 35, 0.85);
+  z-index: 10;
+}
+
+/* Spotlight glow removed to fix brown flash */
+
+/* Sheen border glow removed to fix brown flash */
+
+/* Disable glow effects on coming-soon cards */
+
+/* ── Coming soon ── */
+.comingSoon {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.comingSoon:hover {
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0);
+  box-shadow: none;
+}
+
+/* ── Image area ── */
+.imgArea {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(145deg, #2a1a13, #3e2723);
+  overflow: hidden;
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.25, 1), filter 0.4s ease;
+  filter: brightness(0.92);
+}
+
+.card:hover .productImg {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+.noImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #2a1a13, #3e2723);
+}
+
+/* ── Coming soon overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(253, 252, 250, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+}
+
+.comingSoonLabel {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--choco);
+  background: var(--cream);
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.08);
+}
+
+/* ── Info section ── */
+.info {
+  padding: 24px 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--choco);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.price {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--brown);
+}
