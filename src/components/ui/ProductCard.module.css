@@ -131,3 +131,21 @@
   font-size: 1rem;
   color: var(--brown);
 }
+
+@media (max-width: 480px) {
+  .card {
+    min-width: 240px;
+  }
+
+  .imgArea {
+    height: 180px;
+  }
+
+  .info {
+    padding: 16px;
+  }
+
+  .name {
+    font-size: 1.15rem;
+  }
+}

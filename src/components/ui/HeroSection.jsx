@@ -56,7 +56,7 @@ export default function HeroSection({ onShopClick }) {
             </h1>
             <p className={styles.subtitle} style={{ transitionDelay: "250ms" }}>
               Envuelve tus momentos especiales con el sabor artesanal de nuestras
-              chocotejas peruanas — dulces, únicas y hechas con amor.
+              chocotejas dulces, únicas y hechas con amor.
             </p>
             <div className={styles.ctaWrapper} style={{ transitionDelay: "400ms" }}>
               <button className={`btn btn-filled ${styles.cta}`} onClick={onShopClick}>

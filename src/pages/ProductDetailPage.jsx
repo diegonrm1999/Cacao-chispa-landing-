@@ -34,14 +34,11 @@ export default function ProductDetailPage({ productId, onNavigate }) {
 
   return (
     <section className={styles.detailSection}>
-      <div className={styles.backWrapper}>
-        <button className={styles.backBtn} onClick={() => onNavigate("products")}>
-          ← Volver a productos
-        </button>
-      </div>
-
       <div className={`${styles.container} container`}>
         <div className={styles.imageArea}>
+          <button className={styles.backBtn} onClick={() => onNavigate("products")}>
+            ← Volver a productos
+          </button>
           <div className={styles.imageWrapper}>
             {product.image ? (
               <img

@@ -4,13 +4,46 @@
   z-index: 100;
   background: transparent;
   padding: 16px 0;
-  /* Critical: clip the embedded fixed background to the navbar bounds */
+}
+
+.nav-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Critical: move clipping here so mobile menu can overflow the navbar parent */
   contain: paint;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .nav-container {
   position: relative;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,6 +65,10 @@
 }
 
 .navbar-links {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 40px;
   list-style: none;
@@ -93,20 +130,84 @@
   font-family: var(--font-body);
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.secondary-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(62, 39, 35, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  color: #8C5E45;
+  /* Explicit brown */
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.menu-toggle:hover {
+  background: var(--choco);
+  color: var(--cream);
+  border-color: var(--choco);
+}
+
 @media (max-width: 768px) {
   .navbar {
-    padding: 14px 20px;
+    padding: 12px 0;
   }
 
   .navbar-logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: flex;
   }
 
   .navbar-links {
-    gap: 20px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    left: auto;
+    transform: none;
+    width: 300px;
+    height: 100vh;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 40px;
+    box-shadow: -10px 0 30px rgba(62, 39, 35, 0.1);
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.25, 1);
+    z-index: 1000;
+  }
+
+  .navbar-links.menu-open {
+    right: 0;
   }
 
   .navbar-links button {
-    font-size: 1.1rem;
+    font-size: 2.2rem;
+    color: var(--choco);
+    font-family: var(--font-display);
+  }
+
+  .cart-btn {
+    width: 44px;
+    height: 44px;
   }
 }

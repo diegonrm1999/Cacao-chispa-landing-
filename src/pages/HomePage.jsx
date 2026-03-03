@@ -22,7 +22,7 @@ export default function HomePage({ onNavigate }) {
         <div className="container">
           <div className={styles.sectionHeader}>
             <div className={styles.titleWrap}>
-              <span className={styles.icon}>🍬</span>
+              <span className={styles.icon}></span>
               <h2 className={styles.title} style={{ fontFamily: "var(--font-display)" }}>Nuestras Chocotejas</h2>
               <span className={styles.dash}> –</span>
             </div>

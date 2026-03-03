@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./InteractiveBackground.module.css";
 
-export default function InteractiveBackground() {
+export default function InteractiveBackground({ contained = false }) {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export default function InteractiveBackground() {
     };
 
     return (
-        <div className={styles.interactiveBg}>
+        <div className={`${styles.interactiveBg} ${contained ? styles.contained : ""}`}>
             {/* Background base texture */}
             <div className={styles.grainTexture}></div>
 

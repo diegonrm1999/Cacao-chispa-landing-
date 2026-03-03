@@ -14,7 +14,7 @@ export default function ProductsPage({ onNavigate }) {
       <div className="container">
         <div className={styles.header}>
           <h1 className={styles.title}>
-            <span className={styles.icon}>🍫</span>
+            <span className={styles.icon}></span>
             Nuestros Productos
           </h1>
           <p className={styles.subtitle}>
