@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
 import InteractiveBackground from "../ui/InteractiveBackground";
+import logoImg from "../../assets/images/logo.png";
 import "./Navbar.css";
 
 export default function Navbar({ currentPage, onNavigate }) {
@@ -31,7 +32,7 @@ export default function Navbar({ currentPage, onNavigate }) {
 
       <div className="container nav-container">
         <button className="navbar-logo" onClick={() => handleNavigate("home")}>
-          Cacao Chispa
+          <img src={logoImg} alt="Cacao & Chispa" className="navbar-logo-img" />
         </button>
 
         <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>

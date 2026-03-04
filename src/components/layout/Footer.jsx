@@ -32,22 +32,12 @@ export default function Footer({ onNavigate }) {
           </ul>
         </div>
 
-        {/* Legal */}
-        <div className={styles.col}>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Política de privacidad</a></li>
-            <li><a href="#">Términos y condiciones</a></li>
-            <li><a href="#">Cambios y devoluciones</a></li>
-          </ul>
-        </div>
-
         {/* Links */}
         <div className={styles.col}>
           <h4>Links</h4>
           <ul>
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("home"); }}>Nosotros</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("catalog"); }}>Productos</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("products"); }}>Productos</a></li>
             <li><a href={COMPANY.instagram} target="_blank" rel="noreferrer">Instagram</a></li>
           </ul>
         </div>
@@ -56,7 +46,7 @@ export default function Footer({ onNavigate }) {
         <div className={styles.col}>
           <h4>Productos</h4>
           <ul>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("catalog"); }}>Caja de 3 Chocotejas</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("products"); }}>Caja de 3 Chocotejas</a></li>
             <li><span className={styles.soon}>Caja Especial</span></li>
             <li><span className={styles.soon}>Chocotejas Mixtas</span></li>
           </ul>

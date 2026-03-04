@@ -5,7 +5,7 @@ export const COMPANY = {
   phone: "+51 914 593 312",
   location: "Lima, Perú",
   whatsapp: "51914593312",
-  instagram: "#",
+  instagram: "https://www.instagram.com/cacaoychispa?igsh=MWc5cnNydXJwZnZrcA==",
   copyright: "© 2025 Cacao & Chispa. Todos los derechos reservados.",
 };
 
