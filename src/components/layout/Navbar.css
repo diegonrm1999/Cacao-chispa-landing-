@@ -179,9 +179,9 @@
   .navbar-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     left: auto;
-    transform: none;
+    transform: translateX(100%);
     width: 300px;
     height: 100vh;
     background: var(--cream);
@@ -192,12 +192,14 @@
     gap: 32px;
     padding: 40px;
     box-shadow: -10px 0 30px rgba(62, 39, 35, 0.1);
-    transition: right 0.4s cubic-bezier(0.25, 1, 0.25, 1);
+    /* GPU-composited transition — no layout reflow */
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.25, 1);
+    will-change: transform;
     z-index: 1000;
   }
 
   .navbar-links.menu-open {
-    right: 0;
+    transform: translateX(0);
   }
 
   .navbar-links button {
