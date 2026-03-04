@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { COMPANY } from "../../data/company";
 import styles from "./Footer.module.css";
 
-export default function Footer({ onNavigate }) {
+export default function Footer() {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
@@ -36,8 +37,8 @@ export default function Footer({ onNavigate }) {
         <div className={styles.col}>
           <h4>Links</h4>
           <ul>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("home"); }}>Nosotros</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("products"); }}>Productos</a></li>
+            <li><Link to="/">Nosotros</Link></li>
+            <li><Link to="/products">Productos</Link></li>
             <li><a href={COMPANY.instagram} target="_blank" rel="noreferrer">Instagram</a></li>
           </ul>
         </div>
@@ -46,7 +47,7 @@ export default function Footer({ onNavigate }) {
         <div className={styles.col}>
           <h4>Productos</h4>
           <ul>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate("products"); }}>Caja de 3 Chocotejas</a></li>
+            <li><Link to="/products">Caja de 3 Chocotejas</Link></li>
             <li><span className={styles.soon}>Caja Especial</span></li>
             <li><span className={styles.soon}>Chocotejas Mixtas</span></li>
           </ul>

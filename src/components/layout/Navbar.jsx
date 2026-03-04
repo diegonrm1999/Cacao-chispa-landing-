@@ -1,22 +1,25 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import InteractiveBackground from "../ui/InteractiveBackground";
 import logoImg from "../../assets/images/logo.png";
 import "./Navbar.css";
 
-export default function Navbar({ currentPage, onNavigate }) {
+export default function Navbar() {
   const { totalItems } = useCartContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Determine active state for links
-  const isActive = (page) => {
-    if (page === "home") return currentPage === "home";
-    if (page === "products") return currentPage === "products" || currentPage === "product";
+  // Determine active state for links based on actual URL
+  const isActive = (path) => {
+    if (path === "/") return location.pathname === "/";
+    if (path === "/products") return location.pathname.startsWith("/product");
     return false;
   };
 
-  const handleNavigate = (page) => {
-    onNavigate(page);
+  const handleNavigate = (path) => {
+    navigate(path);
     setIsMenuOpen(false);
   };
 
@@ -31,23 +34,23 @@ export default function Navbar({ currentPage, onNavigate }) {
       )}
 
       <div className="container nav-container">
-        <button className="navbar-logo" onClick={() => handleNavigate("home")}>
+        <button className="navbar-logo" onClick={() => handleNavigate("/")}>
           <img src={logoImg} alt="Cacao & Chispa" className="navbar-logo-img" />
         </button>
 
         <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>
           <li>
             <button
-              className={isActive("home") ? "active" : ""}
-              onClick={() => handleNavigate("home")}
+              className={isActive("/") ? "active" : ""}
+              onClick={() => handleNavigate("/")}
             >
               Home
             </button>
           </li>
           <li>
             <button
-              className={isActive("products") ? "active" : ""}
-              onClick={() => handleNavigate("products")}
+              className={isActive("/products") ? "active" : ""}
+              onClick={() => handleNavigate("/products")}
             >
               Productos
             </button>
@@ -56,7 +59,7 @@ export default function Navbar({ currentPage, onNavigate }) {
 
         <div className="nav-actions">
           <div className="secondary-actions">
-            <button className="cart-btn" onClick={() => handleNavigate("cart")}>
+            <button className="cart-btn" onClick={() => handleNavigate("/cart")}>
               <svg
                 width="24"
                 height="24"

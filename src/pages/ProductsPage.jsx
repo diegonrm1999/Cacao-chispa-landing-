@@ -1,12 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { PRODUCTS } from "../data/products";
 import ProductCard from "../components/ui/ProductCard";
 import styles from "./ProductsPage.module.css";
 
-export default function ProductsPage({ onNavigate }) {
+export default function ProductsPage() {
+  const navigate = useNavigate();
   const availableProducts = PRODUCTS.filter((p) => p.available);
 
   const handleProductClick = (product) => {
-    onNavigate("product", { productId: product.id });
+    navigate(`/product/${product.id}`);
   };
 
   return (

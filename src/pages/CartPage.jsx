@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { WHATSAPP_NUMBER } from "../data/products";
 import styles from "./CartPage.module.css";
 
-export default function CartPage({ onNavigate }) {
+export default function CartPage() {
+  const navigate = useNavigate();
   const { items, updateQuantity, removeItem, totalPrice, clearCart } = useCartContext();
   const [orderPlaced, setOrderPlaced] = useState(false);
 
@@ -38,7 +40,7 @@ export default function CartPage({ onNavigate }) {
         <p className={styles.emptyText}>
           Agrega algunas chocotejas para comenzar tu orden
         </p>
-        <button className="btn btn-filled" onClick={() => onNavigate("products")}>
+        <button className="btn btn-filled" onClick={() => navigate("/products")}>
           Ver productos
         </button>
       </section>
@@ -55,7 +57,7 @@ export default function CartPage({ onNavigate }) {
         </p>
         <button className="btn btn-filled" onClick={() => {
           setOrderPlaced(false);
-          onNavigate("products");
+          navigate("/products");
         }}>
           Seguir comprando
         </button>
@@ -145,7 +147,7 @@ export default function CartPage({ onNavigate }) {
             <span>💬</span> Completar orden por WhatsApp
           </button>
 
-          <button className={styles.continueBtn} onClick={() => onNavigate("products")}>
+          <button className={styles.continueBtn} onClick={() => navigate("/products")}>
             Continuar comprando
           </button>
         </div>

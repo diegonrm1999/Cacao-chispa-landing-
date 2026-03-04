@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -9,39 +10,32 @@ import CartPage from "./pages/CartPage";
 import InteractiveBackground from "./components/ui/InteractiveBackground";
 import "./styles/global.css";
 
-export default function App() {
-  const [route, setRoute] = useState({ page: "home", params: {} });
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-  const navigate = (page, params = {}) => {
-    setRoute({ page, params });
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, [pathname]);
 
-  const renderPage = () => {
-    switch (route.page) {
-      case "home":
-        return <HomePage onNavigate={navigate} />;
+  return null;
+}
 
-      case "products":
-        return <ProductsPage onNavigate={navigate} />;
-
-      case "product":
-        return <ProductDetailPage productId={route.params.productId} onNavigate={navigate} />;
-
-      case "cart":
-        return <CartPage onNavigate={navigate} />;
-
-      default:
-        return <HomePage onNavigate={navigate} />;
-    }
-  };
-
+export default function App() {
   return (
-    <CartProvider>
-      <InteractiveBackground />
-      <Navbar onNavigate={navigate} currentPage={route.page} />
-      {renderPage()}
-      <Footer onNavigate={navigate} />
-    </CartProvider>
+    <Router>
+      <CartProvider>
+        <ScrollToTop />
+        <InteractiveBackground />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/product/:productId" element={<ProductDetailPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
+    </Router>
   );
 }

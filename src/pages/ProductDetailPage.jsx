@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { PRODUCTS, WHATSAPP_NUMBER } from "../data/products";
 import { useCartContext } from "../context/CartContext";
 import styles from "./ProductDetailPage.module.css";
 
-export default function ProductDetailPage({ productId, onNavigate }) {
-  const product = PRODUCTS.find((p) => p.id === productId);
+export default function ProductDetailPage() {
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  // Ensure the ID comparison works whether it's a string or number in data
+  const product = PRODUCTS.find((p) => p.id.toString() === productId);
   const { addItem } = useCartContext();
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
@@ -13,7 +17,7 @@ export default function ProductDetailPage({ productId, onNavigate }) {
     return (
       <section className={styles.notFound}>
         <h2>Producto no encontrado</h2>
-        <button className="btn btn-filled" onClick={() => onNavigate("products")}>
+        <button className="btn btn-filled" onClick={() => navigate("/products")}>
           ← Volver a productos
         </button>
       </section>
@@ -36,7 +40,7 @@ export default function ProductDetailPage({ productId, onNavigate }) {
     <section className={styles.detailSection}>
       <div className={`${styles.container} container`}>
         <div className={styles.imageArea}>
-          <button className={styles.backBtn} onClick={() => onNavigate("products")}>
+          <button className={styles.backBtn} onClick={() => navigate(-1)}>
             ← Volver a productos
           </button>
           <div className={styles.imageWrapper}>
