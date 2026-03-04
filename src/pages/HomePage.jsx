@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useScrollReveal } from "../hooks/useScrollReveal";
 import HeroSection from "../components/ui/HeroSection";
 import FoundersSection from "../components/ui/FoundersSection";
 import ProductCard from "../components/ui/ProductCard";
@@ -8,7 +7,6 @@ import styles from "./HomePage.module.css";
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const productsRevealRef = useScrollReveal();
 
   const handleProductClick = (product) => {
     navigate(`/product/${product.id}`);
@@ -20,7 +18,7 @@ export default function HomePage() {
       <HeroSection onShopClick={() => navigate("/products")} />
 
       {/* S2 — Products preview */}
-      <section ref={productsRevealRef} className={`${styles.productsSection} reveal-up`}>
+      <section className={styles.productsSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
             <div className={styles.titleWrap}>

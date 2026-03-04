@@ -100,16 +100,16 @@ body {
   box-shadow: var(--shadow-btn);
 }
 
-/* Scroll reveal utilities */
+/* Scroll reveal utilities - completely disabled */
 .reveal-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 1, 0.25, 1);
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .reveal-up.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* On mobile: Disable scroll reveal completely to avoid flashes */
