@@ -142,17 +142,31 @@
 
 @media (max-width: 768px) {
 
-    /* Reduce animations on mobile */
-    .blob {
-        animation: none;
-    }
-
+    /* Completely disable animations and complex effects on mobile */
+    .blob,
     .particle {
         animation: none;
+        opacity: 0;
     }
 
     .layer {
-        transition: transform 0.4s ease-out;
-        /* Slower, smoother transition on mobile */
+        transition: none;
+        transform: none !important;
+        will-change: auto;
+    }
+
+    /* Disable complex filters on mobile */
+    .blob {
+        filter: none;
+    }
+
+    .particle {
+        filter: none;
+    }
+
+    /* Force GPU compositing */
+    .interactiveBg {
+        transform: translateZ(0);
+        will-change: auto;
     }
 }

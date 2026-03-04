@@ -126,6 +126,32 @@
     max-width: 600px;
     margin: 0 auto;
   }
+
+  /* Disable all transitions and effects on mobile to prevent flickering */
+  .frame,
+  .emoji,
+  .nameTag {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+
+  .frame:last-child {
+    transform: none !important;
+  }
+
+  .frame:hover {
+    transform: none !important;
+  }
+
+  .frame:last-child:hover {
+    transform: none !important;
+  }
+
+  .frame:hover .emoji {
+    transform: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -135,5 +161,15 @@
 
   .frame:last-child {
     height: 220px;
+  }
+
+  /* Force GPU compositing on mobile */
+  .section,
+  .inner,
+  .photos,
+  .frame,
+  .emoji {
+    transform: translateZ(0);
+    will-change: auto;
   }
 }
