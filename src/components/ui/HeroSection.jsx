@@ -6,9 +6,21 @@ export default function HeroSection({ onShopClick }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const heroRef = useRef(null);
 
+  // Check if mobile on mount to skip animation
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    // On mobile, immediately show content without animation to prevent flickering
+    if (isMobile) {
+      setIsLoaded(true);
+    } else {
+      // On desktop, add a small delay for animation
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile]);
 
   // Subtle Mouse Parallax Effect for depth
   const handleMouseMove = (e) => {
@@ -47,18 +59,18 @@ export default function HeroSection({ onShopClick }) {
         <div className={styles.content}>
           {/* Left: Text Content */}
           <div className={`${styles.text} ${isLoaded ? styles.animateIn : ""}`}>
-            <h1 className={styles.title} style={{ transitionDelay: "100ms" }}>
+            <h1 className={styles.title} style={{ transitionDelay: isMobile ? "0ms" : "100ms" }}>
               Una{" "}
               <span className={styles.pill}>Chocoteja</span>
               <br />
               que enamora{" "}
               <span className={`${styles.pill} ${styles.pillRose}`}>corazones</span>
             </h1>
-            <p className={styles.subtitle} style={{ transitionDelay: "250ms" }}>
+            <p className={styles.subtitle} style={{ transitionDelay: isMobile ? "0ms" : "250ms" }}>
               Envuelve tus momentos especiales con el sabor artesanal de nuestras
               chocotejas dulces, únicas y hechas con amor.
             </p>
-            <div className={styles.ctaWrapper} style={{ transitionDelay: "400ms" }}>
+            <div className={styles.ctaWrapper} style={{ transitionDelay: isMobile ? "0ms" : "400ms" }}>
               <button className={`btn btn-filled ${styles.cta}`} onClick={onShopClick}>
                 Ver productos →
               </button>

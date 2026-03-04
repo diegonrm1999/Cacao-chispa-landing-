@@ -84,7 +84,7 @@ export default function CartPage() {
             <div key={item.id} className={styles.item}>
               <div className={styles.itemImage}>
                 {item.image ? (
-                  <img src={item.image} alt={item.name} className={styles.productImg} />
+                  <img src={item.image} alt={item.name} className={styles.productImg} width={80} height={80} />
                 ) : (
                   <span className={styles.itemEmoji}>{item.emoji}</span>
                 )}

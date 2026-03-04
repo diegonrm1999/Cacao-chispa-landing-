@@ -316,6 +316,21 @@
   .productImg {
     max-width: 300px;
   }
+
+  /* Disable entrance animations on tablet to prevent flickering */
+  .text > *,
+  .showcase {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animateIn,
+  .animateShowcaseIn {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -351,5 +366,20 @@
   .sp3 {
     display: none;
     /* remove clutter on small screens */
+  }
+
+  /* Disable all entrance animations on mobile to prevent flickering */
+  .text > *,
+  .showcase {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animateIn,
+  .animateShowcaseIn {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
