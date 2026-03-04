@@ -4,19 +4,21 @@ export function useScrollReveal(options = {}) {
   const ref = useRef(null);
 
   useEffect(() => {
+    // To prevent infinite rerenders if options ref changes, we check its values
+    const optionsObj = options || {};
     const defaultOptions = {
       root: null,
-      rootMargin: "0px 0px -40px 0px", // trigger 40px before bottom edge
+      rootMargin: "0px", // trigger exactly when it enters the viewport to avoid late pop-ins
       threshold: 0.05,                  // fire when just 5% is visible
-      ...options,
+      ...optionsObj,
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          // Optional: stop observing once it has revealed once
-          // observer.unobserve(entry.target); 
+          // Stop observing once it has revealed once to prevent scroll flashes
+          obs.unobserve(entry.target); 
         }
       });
     }, defaultOptions);
@@ -31,7 +33,7 @@ export function useScrollReveal(options = {}) {
         observer.unobserve(currentRef);
       }
     };
-  }, [options]);
+  }, [JSON.stringify(options)]); // Stringify options to avoid unnecessary observer re-creations
 
   return ref;
 }
