@@ -25,6 +25,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  /* fallback */
+  height: 100dvh;
   background: rgba(0, 0, 0, 0.3);
   z-index: 900;
   cursor: pointer;
@@ -192,6 +194,8 @@
     transform: translateX(100%);
     width: 300px;
     height: 100vh;
+    /* fallback */
+    height: 100dvh;
     background: var(--cream);
     display: flex;
     flex-direction: column;

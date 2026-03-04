@@ -12,7 +12,7 @@ export default function HeroSection({ onShopClick }) {
 
   // Subtle Mouse Parallax Effect for depth
   const handleMouseMove = (e) => {
-    if (!heroRef.current) return;
+    if (!heroRef.current || window.innerWidth <= 768) return;
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
 

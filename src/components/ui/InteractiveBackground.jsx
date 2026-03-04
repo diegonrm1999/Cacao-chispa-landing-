@@ -8,6 +8,9 @@ export default function InteractiveBackground({ contained = false }) {
         let animationFrameId = null;
 
         const handleMouseMove = (e) => {
+            // Disable on mobile to prevent scroll jitters or unnecessary re-renders
+            if (window.innerWidth <= 768) return;
+
             // Calculate mouse position relative to center of screen (-1 to 1)
             const x = (e.clientX / window.innerWidth) * 2 - 1;
             const y = (e.clientY / window.innerHeight) * 2 - 1;
@@ -21,7 +24,10 @@ export default function InteractiveBackground({ contained = false }) {
             }
         };
 
-        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        // Only add listener on desktop
+        if (window.innerWidth > 768) {
+            window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        }
 
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);

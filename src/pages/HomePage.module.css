@@ -51,6 +51,9 @@
 @media (max-width: 768px) {
   .productsSection {
     padding: 40px 0;
+    isolation: isolate;
+    transform: translateZ(0);
+    /* Force hardware compositing to avoid element disappearing bugs in iOS Safari */
   }
 
   .sectionHeader {
