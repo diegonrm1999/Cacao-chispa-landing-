@@ -38,7 +38,6 @@
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  overflow: visible;
   padding-bottom: 24px;
   padding-top: 12px;
   margin: 0 auto;
