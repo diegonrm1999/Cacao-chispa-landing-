@@ -49,6 +49,8 @@ export default function ProductDetailPage() {
                 src={product.image}
                 alt={product.name}
                 className={styles.productImg}
+                width={420}
+                height={420}
               />
             ) : (
               <div className={styles.imgPlaceholder} />

@@ -74,6 +74,8 @@ export default function HeroSection({ onShopClick }) {
                 src={chocotejaImg}
                 alt="Chocoteja Premium"
                 className={styles.productImg}
+                width={500}
+                height={500}
               />
               {/* Subtle floating abstract elements staging the product */}
               <div className={`${styles.sprinkle} ${styles.sp1}`}>✦</div>

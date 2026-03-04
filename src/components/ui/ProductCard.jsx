@@ -52,6 +52,8 @@ export default function ProductCard({ product, onClick }) {
             src={image}
             alt={name}
             className={styles.productImg}
+            width={280}
+            height={220}
           />
         ) : (
           <div className={styles.noImagePlaceholder} />

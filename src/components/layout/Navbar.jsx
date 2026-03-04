@@ -35,7 +35,7 @@ export default function Navbar() {
 
       <div className="container nav-container">
         <button className="navbar-logo" onClick={() => handleNavigate("/")}>
-          <img src={logoImg} alt="Cacao & Chispa" className="navbar-logo-img" />
+          <img src={logoImg} alt="Cacao & Chispa" className="navbar-logo-img" width={120} height={40} />
         </button>
 
         <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>
