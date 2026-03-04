@@ -6,8 +6,8 @@ export function useScrollReveal(options = {}) {
   useEffect(() => {
     const defaultOptions = {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px", // trigger 40px before bottom edge
+      threshold: 0.05,                  // fire when just 5% is visible
       ...options,
     };
 
